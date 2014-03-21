@@ -1,4 +1,6 @@
 class Spot < ActiveRecord::Base
+	has_many :dashboard_spots
+	has_many :dashboards, :through => :dashboard_spots
 
 	after_initialize :default_values
 	attr_accessor :spot_hash
@@ -24,19 +26,26 @@ class Spot < ActiveRecord::Base
 		end
 	end
 
-[{"close"=>{"day"=>0, "time"=>"1730"}, "open"=>{"day"=>0, "time"=>"1000"}}, {"close"=>{"day"=>1, "time"=>"1730"}, "open"=>{"day"=>1, "time"=>"1000"}}, {"close"=>{"day"=>2, "time"=>"1730"}, "open"=>{"day"=>2, "time"=>"1000"}}, {"close"=>{"day"=>3, "time"=>"1730"}, "open"=>{"day"=>3, "time"=>"1000"}}, {"close"=>{"day"=>4, "time"=>"1730"}, "open"=>{"day"=>4, "time"=>"1000"}}, {"close"=>{"day"=>5, "time"=>"2100"}, "open"=>{"day"=>5, "time"=>"1000"}}, {"close"=>{"day"=>6, "time"=>"2100"}, "open"=>{"day"=>6, "time"=>"1000"}}] 
-
 	def set_attributes_from_hash
 		self.name=spot_hash.name
 		self.address=spot_hash.formatted_address
 		self.website=spot_hash.website
+		if spot_hash.opening_hours == nil
+			self.schedule_data = false
+		else
+			set_hours
+			self.schedule_data = true
+		end
+		self.save
+	end
+
+	def set_hours
 		hours_hash.each do |day|
 			day.each do |action, info|
 				week_day = WEEKDAYS[info["day"]]
 				self.send("#{week_day}_#{action}=", info["time"].to_i)
 			end
 		end
-		self.save
 	end
 
 	def hours_hash
