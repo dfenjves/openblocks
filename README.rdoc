@@ -1,33 +1,14 @@
-== README
+== OPEN BLOCKS
+A place to see what's open.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
-
-
-
-Get using httparty:
-HTTParty.get('https://maps.googleapis.com/maps/api/place/textsearch/xml?query=museums+in+new+york&sensor=true&key=AIzaSyCpDEdjyJHzpCv2QRfrjAyIW7aGr9tpXuY')
+Features to work on: 
+customizeable blocks (places)
+customize what is shown on a block (opening times, closing times, prices, map, etc)
+geolocation for mobile
+toggle for free/paid
+toggle for open/closed
+toggle for distance
+Group blocks
+blocks for different days of the week
+icons for different types of block (museum, grocery store, etc)
+oauth
