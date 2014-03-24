@@ -74,7 +74,14 @@ class Spot < ActiveRecord::Base
 	end
 
 	def today_schedule
-		"#{@opening.to_s[0..1]}:#{@opening.to_s[2..3]} - #{@closing}"
+		if @closing.to_s[0..1].to_i >= 13
+			@close_hours = @closing.to_s[0..1].to_i-12
+		else
+			@close_hours = @closing.to_s[0..1]
+		end
+		
+
+		"#{@opening.to_s[0..1]}:#{@opening.to_s[2..3]} - #{@close_hours}:#{@closing.to_s[2..3]}"
 	end
 
 end
