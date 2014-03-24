@@ -1,4 +1,15 @@
 Openblocks::Application.routes.draw do
+
+  get 'dashboards/index' => 'dashboards#index', :as => 'dashboards'
+  get 'dashboards/:id' => 'dashboards#show', :as => 'dashboard'
+  get 'dashboards/new' => 'dashboards#new', :as => 'new_dashboard'
+  post 'dashboards/' => 'dashboards#create'
+  get 'dashboards/:id/edit' => 'dashboards#edit', :as => 'edit_dashboard'
+  patch 'dashboards/:id' => 'dashboards#update'
+  delete 'dashboards/:id/delete' => 'dashboards#destroy', :as => 'delete_dashboard'
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

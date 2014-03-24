@@ -1,0 +1,7 @@
+<h1>Dashboard Name: <%= @dashboard.name %></h1>
+
+	<% @dashboard.spots.each do |spot| %>
+	<div class="tile">
+		<%= spot.name %> - <%= spot.current_status %>: <%= spot.today_schedule %>
+	</div>	
+	<% end %>

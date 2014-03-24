@@ -2,8 +2,8 @@ class Spot < ActiveRecord::Base
 	has_many :dashboard_spots
 	has_many :dashboards, :through => :dashboard_spots
 
-	after_initialize :default_values
-	attr_accessor :spot_hash
+	attr_accessor :spot_hash, :current_day_of_week, :current_time_of_day
+
 	WEEKDAYS = {
 		0 => "sunday",
 		1 => "monday",
@@ -16,10 +16,11 @@ class Spot < ActiveRecord::Base
 
 	def new_spot(reference)
 		self.spot_hash = CLIENT.spot(reference)
+		set_default_values
 		set_attributes_from_hash
 	end
 
-	def default_values
+	def set_default_values
 		WEEKDAYS.each do |number, name|
 			self.send("#{name}_open=", 0)
 			self.send("#{name}_close=", 0)
@@ -50,6 +51,30 @@ class Spot < ActiveRecord::Base
 
 	def hours_hash
 		spot_hash.opening_hours["periods"]
+	end
+
+	def current_date_and_time
+		self.current_day_of_week = Time.now.to_date.strftime("%A").downcase
+		self.current_time_of_day = Time.now.strftime("%H:%M").gsub(":","").to_i
+	end
+
+	def is_open?
+		current_date_and_time
+		find_open_and_close
+		true if current_time_of_day >= @opening && current_time_of_day <= @closing
+	end
+
+	def find_open_and_close
+		@opening = self.send("#{current_day_of_week}_open")
+		@closing = self.send("#{current_day_of_week}_close")
+	end
+
+	def current_status
+		is_open? ? "Open" : "Closed"
+	end
+
+	def today_schedule
+		"#{@opening.to_s[0..1]}:#{@opening.to_s[2..3]} - #{@closing}"
 	end
 
 end
