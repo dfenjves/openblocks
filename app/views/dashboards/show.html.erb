@@ -2,6 +2,7 @@
 
 	<% @dashboard.spots.each do |spot| %>
 	<div>
-		<%= spot.name %> - <%= spot.current_status %>: <%= spot.today_schedule %>
+		<a href="<%= spot.website %>"><%= spot.name %></a> - <%= spot.current_status %>: <%= spot.today_schedule %> -
+		<%= link_to 'remove', delete_dashboard_spot_path(@dashboard, spot), class: 'remove'%>
 	</div>	
 	<% end %>

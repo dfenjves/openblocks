@@ -1,0 +1,7 @@
+<h1>Your Dashboards</h1>
+
+<ul>
+<% @dashboards.each do |dashboard| %>
+	<li><a href="<%= dashboard_path(dashboard) %>"><%= dashboard.name %></a></li>
+	<% end %>
+</ul>

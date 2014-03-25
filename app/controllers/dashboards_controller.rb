@@ -14,17 +14,14 @@ class DashboardsController < ApplicationController
 	end
 
 	def create
-		@dashboard = Dashboard.new
+		@dashboard = Dashboard.new(dashboard_params)
 
 		if @dashboard.save
-			redirect_to dashboard(@dashboard)
+			redirect_to @dashboard
 		end
 	end
 
 	def edit
-	end
-
-	def create
 	end
 
 	def update
@@ -40,6 +37,7 @@ class DashboardsController < ApplicationController
 	end
 
 	def dashboard_params
+		params.require(:dashboard).permit(:name)
 	end
 
 end
