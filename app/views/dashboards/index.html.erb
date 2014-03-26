@@ -1,7 +1,11 @@
 <h1>Your Dashboards</h1>
 
-<ul>
+
 <% @dashboards.each do |dashboard| %>
-	<li><a href="<%= dashboard_path(dashboard) %>"><%= dashboard.name %></a></li>
+	<a href="<%= dashboard_path(dashboard) %>"><div><h2><%= dashboard.name %></h2></div></a>
 	<% end %>
-</ul>
+<a href="/dashboards/new">
+		<div>
+			<h2 id="add_spot">+</h2>
+		</div>
+</a>

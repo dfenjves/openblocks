@@ -30,8 +30,6 @@ class DashboardsController < ApplicationController
 	def destroy
 	end
 
-	def sandbox
-	end
 
 	private
 

@@ -1,10 +1,7 @@
 Openblocks::Application.routes.draw do
 
   get '/dashboards/index' => 'dashboards#index', :as => 'dashboards'
-  get '/dashboards/new' => 'dashboards#new', :as => 'new_dashboard'
-
-  get '/dashboards/sandbox' => 'dashboards#sandbox'
-  
+  get '/dashboards/new' => 'dashboards#new', :as => 'new_dashboard'  
   get '/dashboards/:id' => 'dashboards#show', :as => 'dashboard'
   post '/dashboards/index' => 'dashboards#create'
   get '/dashboards/:id/edit' => 'dashboards#edit', :as => 'edit_dashboard'
