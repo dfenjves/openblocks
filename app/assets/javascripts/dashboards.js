@@ -21,8 +21,6 @@ $(document).ready(function(){
 		$.ajax(this.href, {method: 'delete'});
 		$(this).parents("div:first").remove()
 	});
-
-
 })
 
 // $('a.remove').click (function(){

@@ -2,11 +2,16 @@ Openblocks::Application.routes.draw do
 
   get '/dashboards/index' => 'dashboards#index', :as => 'dashboards'
   get '/dashboards/new' => 'dashboards#new', :as => 'new_dashboard'
+
+  get '/dashboards/sandbox' => 'dashboards#sandbox'
+  
   get '/dashboards/:id' => 'dashboards#show', :as => 'dashboard'
   post '/dashboards/index' => 'dashboards#create'
   get '/dashboards/:id/edit' => 'dashboards#edit', :as => 'edit_dashboard'
   patch '/dashboards/:id' => 'dashboards#update'
   delete '/dashboards/:id/delete' => 'dashboards#destroy', :as => 'delete_dashboard'
+
+
 
   delete '/dashboards/:dashboard_id/spots/:id' => 'dashboard_spots#delete', :as => 'delete_dashboard_spot'
 

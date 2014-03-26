@@ -1,0 +1,30 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<body>
+<div class="tiles">
+    <div class="live-tile">
+        <div style="background-color:Red;">test 1</div>
+		<div style="background-color:Orange;">test back</div>
+    </div>
+    <div class="live-tile" data-mode="flip">
+        <div style="background-color:green;">test 2</div>
+        <div style="background-color:red;">test 2 - back</div>
+    </div>
+    <div class="list-tile">
+        <ul class="flip-list fourTiles" data-mode="flip-list">
+            <li><div style="background-color:Blue;"></div><div style="background-color:Orange;"></div></li>
+            <li><div style="background-color:Orange;"></div><div style="background-color:Blue;"></div></li>
+            <li><div style="background-color:Green;"></div><div style="background-color:Red;"></div></li>
+            <li><div style="background-color:Red;"></div><div style="background-color:Green;"></div></li>
+        </ul>
+    </div>
+</div>
+    
+    <script src="../Scripts/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../Scripts/MetroJs/bundles/MetroJs.lt.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".live-tile,.flip-list").liveTile();
+        });
+    </script>
+</body>

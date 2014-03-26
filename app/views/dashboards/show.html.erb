@@ -1,8 +1,10 @@
 <h1>Dashboard Name: <%= @dashboard.name %></h1>
-
+<div class="tiles">
 	<% @dashboard.spots.each do |spot| %>
-	<div>
-		<a href="<%= spot.website %>"><%= spot.name %></a> - <%= spot.current_status %>: <%= spot.today_schedule %> -
-		<%= link_to 'remove', delete_dashboard_spot_path(@dashboard, spot), class: 'remove'%>
+	<div class="live-tile">
+		<div style="background-color:Green;"><a href="<%= spot.website %>"><%= spot.name %></a> - <%= spot.current_status %>: <%= spot.today_schedule %> -
+		<%= link_to 'remove', delete_dashboard_spot_path(@dashboard, spot), class: 'remove'%></div>
+		
 	</div>	
 	<% end %>
+</div>
