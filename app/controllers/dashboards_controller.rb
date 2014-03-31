@@ -1,5 +1,6 @@
 class DashboardsController < ApplicationController
 	before_action :set_dashboard, only: [:show, :edit, :update, :destroy]
+	before_action :set_time
 
 	def index
 		@dashboards = Dashboard.all
@@ -35,6 +36,10 @@ class DashboardsController < ApplicationController
 
 	def set_dashboard
 		@dashboard = Dashboard.find(params[:id])
+	end
+
+	def set_time
+			@current_time = Time.now.localtime.strftime("%I:%M %p")
 	end
 
 	def dashboard_params
