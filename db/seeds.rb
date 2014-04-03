@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-museums = PlaceSearch.new("New York Museums")
+museums = PlaceSearch.new("San Diego Zoos")
 museums.results.each do |item|
 	puts "loading #{item.name}"
 	a = Spot.new

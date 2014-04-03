@@ -3,7 +3,7 @@ Openblocks::Application.routes.draw do
   get '/dashboards/' => 'dashboards#index', :as => 'dashboards'
   get '/dashboards/new' => 'dashboards#new', :as => 'new_dashboard'  
   get '/dashboards/:id' => 'dashboards#show', :as => 'dashboard'
-  post '/dashboards/index' => 'dashboards#create'
+  post '/dashboards' => 'dashboards#create'
   get '/dashboards/:id/edit' => 'dashboards#edit', :as => 'edit_dashboard'
   patch '/dashboards/:id' => 'dashboards#update'
   delete '/dashboards/:id/delete' => 'dashboards#destroy', :as => 'delete_dashboard'
