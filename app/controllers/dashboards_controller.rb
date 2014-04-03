@@ -16,7 +16,7 @@ class DashboardsController < ApplicationController
 
 	def create
 		@dashboard = Dashboard.new(dashboard_params)
-
+		Spot.all.each { |s| @dashboard.spots << s }
 		if @dashboard.save
 			redirect_to @dashboard
 		end
