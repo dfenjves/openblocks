@@ -6,6 +6,14 @@ $(function() {
     });
 });
 
+$(document).ready(function(){
+  $(".form_div").hide();
+  $("#add_spot").on("click", function(e){
+    e.preventDefault();
+    $(".form_div").toggle();
+    $(".plus_sign").toggle();
+  });
+});
 // $("a[data-remote]").on "ajax:success", (e, data, status, xhr) ->
 // $(document).on 'click', '.remove', ->
 // 	$(@).closest('li').fadeOut()

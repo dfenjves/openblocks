@@ -18,15 +18,14 @@
 			</div>
 		<% end %>
 	<% end %>
-		<div class="span3 spot linktomouseover">
-			<%= form_tag("/dashboards/#{@dashboard.id}/dashboard_spots", method: 'post', remote: true) do %>
-				<%= label_tag :keywords, "Search for more spots" %>
-				<%= text_field_tag :keywords %>
-				<%= submit_tag "Search" %>
-				<!-- , data: { toggle:"modal", target:"#myModal"}  -->
-			<% end %>
-		</div>
-
+    <div class="span3 spot linktomouseover">
+      <%= form_tag("/dashboards/#{@dashboard.id}/dashboard_spots", method: 'post', remote: true) do %>
+        <%= label_tag :keywords, "Search for more spots" %>
+        <%= text_field_tag :keywords %>
+        <%= submit_tag "Search" %>
+        <!-- , data: { toggle:"modal", target:"#myModal"}  -->
+      <% end %>
+    </div>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
