@@ -27,7 +27,7 @@ $(document).ready(function(){
 
     $('.plus').hide();
     $('.add_spot_form').show();
-  })
+  });
 })
 
 // $('a.remove').click (function(){
