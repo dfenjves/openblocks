@@ -7,7 +7,7 @@ class Spot < ActiveRecord::Base
 
 	attr_accessor :spot_hash, :current_day_of_week, :current_time_of_day
 
-	before_save :add_tag
+	before_save :add_tags
 
 	WEEKDAYS = {
 		0 => "sunday",
@@ -92,7 +92,7 @@ class Spot < ActiveRecord::Base
 	def add_tags
 		CLIENT.spot(@reference).types each do |tag|
 			t = Tag.find_by(name: tag)
-			self.spot_tag.create(tag_id: t.id)
+			self.spot_tags.create(tag_id: t.id)
 		end
 	end
 

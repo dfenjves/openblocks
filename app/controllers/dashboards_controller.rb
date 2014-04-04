@@ -16,9 +16,12 @@ class DashboardsController < ApplicationController
 
 	def create
 		@dashboard = Dashboard.new(dashboard_params)
-		Spot.all.each { |s| @dashboard.spots << s }
 		if @dashboard.save
+			Spot.new_by_keyword(get_keyword, @dashboard)
 			redirect_to @dashboard
+		else
+			flash[:erorrs] = "Please name your dashboard"
+			render 'new'
 		end
 	end
 
@@ -40,6 +43,10 @@ class DashboardsController < ApplicationController
 
 	def set_time
 			@current_time = Time.now.localtime.strftime("%I:%M %p")
+	end
+
+	def get_keyword
+		params[:city] + params[:keyword]
 	end
 
 	def dashboard_params
