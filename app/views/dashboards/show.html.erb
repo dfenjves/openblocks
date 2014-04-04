@@ -22,7 +22,8 @@
 			<%= form_tag("/dashboards/#{@dashboard.id}/dashboard_spots", method: 'post', remote: true) do %>
 				<%= label_tag :keywords, "Search for more spots" %>
 				<%= text_field_tag :keywords %>
-				<%= submit_tag "Search", data: { toggle:"modal", target:"#myModal"} %>
+				<%= submit_tag "Search" %>
+				<!-- , data: { toggle:"modal", target:"#myModal"}  -->
 			<% end %>
 		</div>
 
@@ -36,7 +37,7 @@
         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
       </div>
       <div class="modal-body">
-        
+        <ul><li id="list"></li></ul>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
