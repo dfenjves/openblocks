@@ -7,7 +7,7 @@ class Spot < ActiveRecord::Base
 
 	attr_accessor :spot_hash, :current_day_of_week, :current_time_of_day
 
-	# before_save :add_tag
+	before_save :add_tag
 
 	WEEKDAYS = {
 		0 => "sunday",
