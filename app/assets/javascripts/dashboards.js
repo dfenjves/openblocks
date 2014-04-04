@@ -1,8 +1,10 @@
 $(function() {
     $('.linktomouseover').hover(function() {
-        $(this).addClass('hover1')
+        $(this).addClass('hover1');
+        $(this).find("p").fadeIn();
     }, function() {
-        $(this).removeClass('hover1')
+        $(this).removeClass('hover1');
+        $(this).find("p").fadeOut();
     });
 });
 
