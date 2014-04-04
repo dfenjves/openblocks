@@ -18,17 +18,17 @@
 			</div>
 		<% end %>
 	<% end %>
-	<a href="#">
-		<div class="span3 spot linktomouseover">
-			<h2 id="add_spot">+</h2>
+	<a href="#" id="add_spot">
+		<div class="plus_sign span3 spot linktomouseover">
+			<h2>+</h2>
 		</div>
+    <div class="form_div span3 spot linktomouseover">
+    <%= form_tag("/dashboards/#{@dashboard.id}/dashboard_spots", method: 'post') do %>
+      <%= label_tag :keywords, "Search for more spots" %>
+      <%= text_field_tag :keywords %>
+    <% end %>
+    </div>
 	</a>
-
-	<%= form_tag("/dashboards/#{@dashboard.id}/dashboard_spots", method: 'post') do %>
-		<%= label_tag :keywords, "Search for more spots" %>
-		<%= text_field_tag :keywords %>
-	<% end %>
-
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
