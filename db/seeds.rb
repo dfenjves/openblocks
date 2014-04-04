@@ -6,12 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-ALLTAGS.each do |tag|
+Tag::ALLTAGS.each do |tag|
   t = Tag.new
   t.name = tag
   t.save
 end
-
 
 museums = PlaceSearch.new("San Diego Zoos")
 museums.results.each do |item|

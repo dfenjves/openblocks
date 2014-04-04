@@ -7,6 +7,8 @@ class Spot < ActiveRecord::Base
 
 	attr_accessor :spot_hash, :current_day_of_week, :current_time_of_day
 
+	before_save :add_tag
+
 	WEEKDAYS = {
 		0 => "sunday",
 		1 => "monday",
@@ -18,6 +20,7 @@ class Spot < ActiveRecord::Base
 	}
 
 	def new_spot(reference)
+		@reference = reference
 		self.spot_hash = CLIENT.spot(reference)
 		set_default_values
 		set_attributes_from_hash
@@ -83,8 +86,21 @@ class Spot < ActiveRecord::Base
 			@close_hours = @closing.to_s[0..1]
 		end
 		
-
 		"#{@opening.to_s[0..1]}:#{@opening.to_s[2..3]} - #{@close_hours}:#{@closing.to_s[2..3]}"
 	end
 
+	def add_tag
+		puts CLIENT.spot(@reference).types
+	end
+
+	def self.new_by_keyword(query, dashboard)
+		if query != ""
+			PlaceSearch.new(query).results.each do |item|
+	  		a = Spot.new
+	  		a.new_spot(item.reference)
+	  		a.dashboard_spot.create(dashboard_id: dashboard.id)
+	  		a.save
+	  	end
+	  end
+	end
 end
