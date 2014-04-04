@@ -20,14 +20,11 @@
 	<% end %>
 	<a href="#">
 		<div class="span3 spot linktomouseover">
-			<h2 id="add_spot">+</h2>
+			<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  		Search for spots
+			</button>
 		</div>
 	</a>
-
-	<%= form_tag("/dashboards/#{@dashboard.id}/dashboard_spots", method: 'post') do %>
-		<%= label_tag :keywords, "Search for more spots" %>
-		<%= text_field_tag :keywords %>
-	<% end %>
 
 
 <!-- Modal -->
@@ -39,7 +36,10 @@
         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
       </div>
       <div class="modal-body">
-        ...
+        <%= form_tag("/dashboards/#{@dashboard.id}/dashboard_spots", method: 'post') do %>
+				<%= label_tag :keywords, "Search for more spots" %>
+				<%= text_field_tag :keywords %>
+	<% end %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
