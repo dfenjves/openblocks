@@ -46,7 +46,7 @@ class DashboardsController < ApplicationController
 	end
 
 	def get_keyword
-		params[:dashboard][:city] + params[:dashboard][:keyword]
+		params[:city] + params[:keyword]
 	end
 
 	def dashboard_params
