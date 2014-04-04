@@ -1,4 +1,10 @@
-
+$(function() {
+    $('.linktomouseover').hover(function() {
+        $(this).addClass('hover1')
+    }, function() {
+        $(this).removeClass('hover1')
+    });
+});
 
 // $("a[data-remote]").on "ajax:success", (e, data, status, xhr) ->
 // $(document).on 'click', '.remove', ->

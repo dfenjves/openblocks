@@ -1,0 +1,43 @@
+body {
+  color: #515047;
+  background-color: #F2F1DB;
+}
+
+h1 {
+  color: #515047;
+}
+
+h2 {
+  color: #c2d4c0;
+}
+
+h3 {
+  color: #3b7cbf;
+}
+
+p {
+  color: #b9b8a4;
+}
+
+.spot {
+  width: 250px;
+  height: 250px;
+
+/*  display:block;
+  position:absolute;
+  top:0;
+  left:0;*/
+  opacity:0.8;
+  filter:alpha(opacity=40);
+  -moz-opacity: 0.4;
+  z-index:-1;
+  transition: background-color 0.5s;
+  -moz-transition: background-color 0.5s;
+  -webkit-transition: background-color 0.5s;
+  -o-transition: background-color 0.5s;
+}
+
+.hover1 {
+  background-color: #e5e4cf;   
+}
+
