@@ -4,6 +4,22 @@ class DashboardsController < ApplicationController
 
 	def index
 		@dashboards = Dashboard.all
+    @search = Dashboard.search(params[:q])
+    @all_found = @search.result
+   #  not_found = @dashboards - @all_found
+	  # @not_found =  not_found.collect do |dashboard|
+	  #   							dashboard.id
+	  #   						end
+
+    respond_to do |f|
+      if @all_found.length > 1
+        f.html {head :ok}
+        f.js {render 'search_success'}
+      else
+        f.html {head :error}
+        f.js {render 'search_failure'}
+      end
+    end
 	end
 
 	def show

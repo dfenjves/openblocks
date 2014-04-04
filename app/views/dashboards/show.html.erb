@@ -1,6 +1,3 @@
-<!-- <div class=".error"></div>  -->
-<!-- change with javascript to show various messages as they arise -->
-
 <h1><%= @dashboard.name %></h1>
 	<% @dashboard.spots.each do |spot| %>
 	<a href="<%=spot.website%>">
@@ -10,7 +7,7 @@
 			<h2 class="<%=spot.current_status%>"><%=spot.current_status%></h2>
 			<br>
 			<p><%=spot.today_schedule%></p>
-			<!-- <p><%#= link_to '✖', delete_dashboard_spot_path(@dashboard, spot), remote: true, class: 'remove', method: :delete %></p> -->
+			<%= link_to '✖', delete_dashboard_spot_path(@dashboard, spot), remote: true, class: 'remove', method: :delete %>
 		</div>
 	</a>
 	<% end %>

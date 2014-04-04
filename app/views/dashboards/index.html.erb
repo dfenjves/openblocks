@@ -1,11 +1,25 @@
 <h1>Your Dashboards</h1>
 
-
-<% @dashboards.each do |dashboard| %>
-	<a href="<%= dashboard_path(dashboard) %>"><div><h2><%= dashboard.name %></h2></div></a>
-	<% end %>
-<a href="/dashboards/new">
-		<div>
-			<h2 id="add_spot">+</h2>
-		</div>
-</a>
+<% if @all_found.length < 1 %>
+  <% @dashboards.each do |dashboard| %>
+  	<a href="<%= dashboard_path(dashboard) %>"><div><h2><%= dashboard.name %></h2></div></a>
+  	<% end %>
+  <a href="/dashboards/new">
+  		<div>
+  			<h2 id="add_spot">+</h2>
+  		</div>
+  </a>
+<% else %>
+  <% @all_found.each do |dashboard| %>
+    <a href="<%= dashboard_path(dashboard) %>"><div><h2><%= dashboard.name %></h2></div></a>
+    <% end %>
+  <a href="/dashboards/new">
+      <div>
+        <h2 id="add_spot">+</h2>
+      </div>
+  </a>
+<% end %>
+<%= search_form_for @search, remote: true do |f| %>
+  <%= f.text_field :name_cont, placeholder: "Search by name..." %>
+  <%= f.submit 'Search' %>
+<% end %>
