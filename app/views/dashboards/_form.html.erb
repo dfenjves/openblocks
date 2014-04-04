@@ -1,4 +1,7 @@
 <%= form_for @dashboard do |f|%>
 	<%= f.text_field :name %>
+  <em>Optional:</em>
+  <%= f.text_field :city %>
+  <%= f.text_field :keyword %>
 	<%= f.submit %>
 <% end %>
