@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140321190404) do
+ActiveRecord::Schema.define(version: 20140404125835) do
 
   create_table "dashboard_spots", force: true do |t|
     t.integer  "dashboard_id"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 20140321190404) do
 
   create_table "dashboards", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "spot_tags", force: true do |t|
+    t.integer  "spot_id"
+    t.integer  "tag_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -47,6 +54,12 @@ ActiveRecord::Schema.define(version: 20140321190404) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "schedule_data"
+  end
+
+  create_table "tags", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
