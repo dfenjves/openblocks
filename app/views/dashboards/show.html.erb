@@ -19,3 +19,8 @@
 			<h2 id="add_spot">+</h2>
 		</div>
 	</a>
+
+	<%= form_tag("/dashboards/#{@dashboard.id}/dashboard_spots", method: 'post') do %>
+		<%= label_tag :keywords, "Search for more spots" %>
+		<%= text_field_tag :keywords %>
+	<% end %>
