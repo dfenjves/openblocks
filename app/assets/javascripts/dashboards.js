@@ -14,14 +14,6 @@
 // 	});
 // });
 
-$(document).ready(function(){
-	$('a.remove').click (function(e){
-		e.preventDefault()
-
-		$.ajax(this.href, {method: 'delete'});
-		$(this).parents("div:first").remove()
-	});
-})
 
 // $('a.remove').click (function(){
 // 	$(this).closest("li").hide();
