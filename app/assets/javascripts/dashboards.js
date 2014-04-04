@@ -21,6 +21,13 @@ $(document).ready(function(){
 		$.ajax(this.href, {method: 'delete'});
 		$(this).parents("div:first").remove()
 	});
+
+  $('.plus').on('click', function(e){
+    e.preventDefault();
+
+    $('.plus').hide();
+    $('.add_spot_form').show();
+  })
 })
 
 // $('a.remove').click (function(){

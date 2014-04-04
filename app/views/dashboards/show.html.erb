@@ -1,18 +1,23 @@
 <h1><%= @dashboard.name %></h1>
 	<% @dashboard.spots.each do |spot| %>
-	<a href="<%=spot.website%>">
-		<div>
-			<h3><%=spot.name%></h3>
-			</br>
-			<h2 class="<%=spot.current_status%>"><%=spot.current_status%></h2>
-			<br>
-			<p><%=spot.today_schedule%></p>
-<!-- 			<%= link_to 'remove', delete_dashboard_spot_path(@dashboard, spot), class: 'remove'%>
- -->		</div>
-	</a>
+		<a href="<%=spot.website%>">
+			<div>
+				<h3><%=spot.name%></h3>
+				</br>
+				<h2 class="<%=spot.current_status%>"><%=spot.current_status%></h2>
+				<br>
+				<p><%=spot.today_schedule%></p>
+	 			<%= link_to 'remove', delete_dashboard_spot_path(@dashboard, spot), class: 'remove'%>
+			</div>
+		</a>
 	<% end %>
 	<a href="#">
 		<div>
-			<h2 id="add_spot">+</h2>
+			<h2 id="add_spot plus">
+				+
+			</h2>
+			<p class="add_spot_text">
+				<%= render 'dashboard_spots/form' %>
+			</p>
 		</div>
 	</a>
