@@ -7,7 +7,7 @@ class Spot < ActiveRecord::Base
 
 	attr_accessor :spot_hash, :current_day_of_week, :current_time_of_day
 
-	before_save :add_tag
+	# before_save :add_tag
 
 	WEEKDAYS = {
 		0 => "sunday",
@@ -21,7 +21,7 @@ class Spot < ActiveRecord::Base
 
 	def new_spot(reference)
 		@reference = reference
-		self.spot_hash = CLIENT.spot(reference)
+		self.spot_hash = CLIENT.spot(@reference)
 		set_default_values
 		set_attributes_from_hash
 	end
@@ -90,7 +90,10 @@ class Spot < ActiveRecord::Base
 	end
 
 	def add_tag
-		puts CLIENT.spot(@reference).types
+		CLIENT.spot(@reference).types each do |tag|
+			t = Tag.find_by(name: tag)
+			self.spot_tag.create(tag_id: t.id)
+		end
 	end
 
 	def self.new_by_keyword(query, dashboard)
