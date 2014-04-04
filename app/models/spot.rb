@@ -5,7 +5,7 @@ class Spot < ActiveRecord::Base
 	has_many :spot_tags
 	has_many :tags, :through => :spot_tags
 
-	attr_accessor :spot_hash, :current_day_of_week, :current_time_of_day
+	attr_accessor :current_day_of_week, :current_time_of_day, :spot_hash
 
 	after_save :add_tags
 
@@ -20,8 +20,9 @@ class Spot < ActiveRecord::Base
 	}
 
 	def new_spot(reference)
-		@reference = reference
-		self.spot_hash = CLIENT.spot(@reference)
+		self.spot_hash = CLIENT.spot(reference)
+		self.icon_url = self.spot_hash.icon
+		self.save
 		set_default_values
 		set_attributes_from_hash
 	end
@@ -92,9 +93,13 @@ class Spot < ActiveRecord::Base
 	def add_tags
 		self.spot_hash.types.each do |tag|
 			t = Tag.find_by(name: tag)
-			self.spot_tags.create(tag_id: t.id)
-		end
-		binding.pry
+			if t == nil
+				t = Tag.new
+				t.name = tag
+				t.save
+			end
+			self.spot_tags.create(tag_id: t.id) if !self.tags.include?(t) 
+		end	
 	end
 
 	def self.new_by_keyword(query, dashboard)

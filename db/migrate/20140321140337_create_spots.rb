@@ -1,9 +1,10 @@
 class CreateSpots < ActiveRecord::Migration
   def change
     create_table :spots do |t|
-    	t.string :name
-    	t.string :address
-    	t.string :website
+    	t.string  :name
+    	t.string  :address
+    	t.string  :website
+      t.string  :icon_url
     	t.integer :monday_open
 			t.integer :monday_close
 			t.integer :tuesday_open

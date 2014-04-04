@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20140404125835) do
     t.string   "name"
     t.string   "address"
     t.string   "website"
+    t.string   "icon_url"
     t.integer  "monday_open"
     t.integer  "monday_close"
     t.integer  "tuesday_open"
