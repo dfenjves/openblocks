@@ -27,6 +27,10 @@ class DashboardsController < ApplicationController
 
 	def search
 		@results = Dashboard.search_by_keyword(params[:keywords])
+		respond_to do |format|
+			format.html {head :ok}
+			format.js
+		end
 	end
 
 	def edit
