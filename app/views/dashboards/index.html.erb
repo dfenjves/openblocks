@@ -2,10 +2,14 @@
 
 
 <% @dashboards.each do |dashboard| %>
-	<a href="<%= dashboard_path(dashboard) %>"><div><h2><%= dashboard.name %></h2></div></a>
-	<% end %>
+  <%= link_to dashboard_path(dashboard) do %>
+	  <div class="span3">
+      <%= dashboard.name %>
+    </div>
+  <% end %>
+<% end %>
 <a href="/dashboards/new">
-		<div>
-			<h2 id="add_spot">+</h2>
-		</div>
+	<div>
+		<h2 id="add_spot">+</h2>
+	</div>
 </a>
