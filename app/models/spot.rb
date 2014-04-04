@@ -2,6 +2,9 @@ class Spot < ActiveRecord::Base
 	has_many :dashboard_spots
 	has_many :dashboards, :through => :dashboard_spots
 
+	has_many :spot_tags
+	has_many :tags, :through => :spot_tags
+
 	attr_accessor :spot_hash, :current_day_of_week, :current_time_of_day
 
 	WEEKDAYS = {

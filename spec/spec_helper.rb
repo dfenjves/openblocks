@@ -32,8 +32,10 @@ RSpec.configure do |config|
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
-  config.before(:each) do
+  config.include Rails.application.routes.url_helpers
+  config.before(:suite) do
     DatabaseCleaner.clean
+    Rails.application.load_seed # loading seeds
   end
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
