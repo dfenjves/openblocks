@@ -89,7 +89,7 @@ class Spot < ActiveRecord::Base
 		"#{@opening.to_s[0..1]}:#{@opening.to_s[2..3]} - #{@close_hours}:#{@closing.to_s[2..3]}"
 	end
 
-	def add_tag
+	def add_tags
 		CLIENT.spot(@reference).types each do |tag|
 			t = Tag.find_by(name: tag)
 			self.spot_tag.create(tag_id: t.id)
@@ -101,7 +101,7 @@ class Spot < ActiveRecord::Base
 			PlaceSearch.new(query).results.each do |item|
 	  		a = Spot.new
 	  		a.new_spot(item.reference)
-	  		a.dashboard_spot.create(dashboard_id: dashboard.id)
+	  		a.dashboard_spots.create(dashboard_id: dashboard.id)
 	  		a.save
 	  	end
 	  end
