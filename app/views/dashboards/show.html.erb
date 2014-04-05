@@ -1,22 +1,16 @@
-<!-- <div class=".error"></div>  -->
-<!-- change with javascript to show various messages as they arise -->
-
 <h1><%= @dashboard.name %></h1>
 	<% @dashboard.spots.each do |spot| %>
-		<%= link_to spot.website do %>
-			<div class="span3 spot linktomouseover">
-				<h3><%=spot.name%></h3>
-				</br>
-				<h2 class="<%=spot.current_status%>"><%=spot.current_status%></h2>
-				<br>
-				<div class="appear-on-mouseover">
-					<p>
-						<%=spot.today_schedule%>
-					</p>
-				</div>
-				<!-- <p><%#= link_to '✖', delete_dashboard_spot_path(@dashboard, spot), remote: true, class: 'remove', method: :delete %></p> -->
-			</div>
-		<% end %>
+
+	<a href="<%=spot.website%>">
+		<div>
+			<h3><%=spot.name%></h3>
+			</br>
+			<h2 class="<%=spot.current_status%>"><%=spot.current_status%></h2>
+			<br>
+			<p><%=spot.today_schedule%></p>
+			<%= link_to '✖', delete_dashboard_spot_path(@dashboard, spot), remote: true, class: 'remove', method: :delete %>
+		</div>
+	</a>
 	<% end %>
 
 	<a href="#" id="add_spot">
