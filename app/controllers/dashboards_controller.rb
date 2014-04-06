@@ -10,13 +10,15 @@ class DashboardsController < ApplicationController
 	  @not_found_ids =  @not_found.collect do |dashboard|
 	    							dashboard.id
 	    						end
-	  if params[:q] != nil
+	  if params[:show_all] != nil
+	    respond_to do |f|
+	      f.html {head :ok}
+	      f.js {render 'show_all'}  	
+	    end
+	  elsif params[:q] != nil
 	    respond_to do |f|
 	      f.html {head :ok}
 	      f.js {render 'search_success', locals: {unfound: @not_found_ids}}
-	    #   # else
-	    #   #   f.html {head :error}
-	    #   #   f.js {render 'search_failure'}
 	    end
     end
 	end
