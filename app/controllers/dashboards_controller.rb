@@ -6,19 +6,18 @@ class DashboardsController < ApplicationController
 		@dashboards = Dashboard.all
     @search = Dashboard.search(params[:q])
     @all_found = @search.result
-   #  not_found = @dashboards - @all_found
-	  # @not_found =  not_found.collect do |dashboard|
-	  #   							dashboard.id
-	  #   						end
-
-    respond_to do |f|
-      if @all_found.length > 1
-        f.html {head :ok}
-        f.js {render 'search_success'}
-      else
-        f.html {head :error}
-        f.js {render 'search_failure'}
-      end
+    @not_found = @dashboards - @all_found
+	  @not_found_ids =  @not_found.collect do |dashboard|
+	    							dashboard.id
+	    						end
+	  if params[:q] != nil
+	    respond_to do |f|
+	      f.html {head :ok}
+	      f.js {render 'search_success', locals: {unfound: @not_found_ids}}
+	    #   # else
+	    #   #   f.html {head :error}
+	    #   #   f.js {render 'search_failure'}
+	    end
     end
 	end
 
@@ -44,7 +43,7 @@ class DashboardsController < ApplicationController
 		end
 	end
 
-	def search
+	def search_modal
 		@results = Dashboard.search_by_keyword(params[:keywords])
 		respond_to do |format|
 			format.html {head :ok}
