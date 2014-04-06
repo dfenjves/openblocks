@@ -1,4 +1,9 @@
 <h1>Your Dashboards</h1>
+<%= search_form_for @search, remote: true do |f| %>
+  <%= f.text_field :name_cont, placeholder: "Search by name..." %>
+  <%= f.submit 'Search' %>
+  <%= f.submit 'Show All', name: 'show_all' %>
+<% end %>
 
 <% if @all_found.length < 1 %>
   <% @dashboards.each do |dashboard| %>
@@ -19,8 +24,4 @@
       </div>
   </a>
 <% end %>
-<%= search_form_for @search, remote: true do |f| %>
-  <%= f.text_field :name_cont, placeholder: "Search by name..." %>
-  <%= f.submit 'Search' %>
-  <%= f.submit 'Show All', name: 'show_all' %>
-<% end %>
+
