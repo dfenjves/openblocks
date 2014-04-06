@@ -1,5 +1,7 @@
 <% @dashboards.each do |dashboard| %>
   <% if unfound.include?(dashboard.id) %>
     $("a[href='/dashboards/" + "<%= dashboard.id %>" + "']").hide();
+  <% else %>
+  $("a[href='/dashboards/" + "<%= dashboard.id %>" + "']").show();
  <% end %>
 <% end %>
