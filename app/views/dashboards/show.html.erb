@@ -1,14 +1,22 @@
 <h1><%= @dashboard.name %></h1>
 	<% @dashboard.spots.each do |spot| %>
-
-	<a href="<%=spot.website%>">
-		<div>
-			<h3><%=spot.name%></h3>
-			</br>
-			<h2 class="<%=spot.current_status%>"><%=spot.current_status%></h2>
-			<br>
-			<p><%=spot.today_schedule%></p>
-			<%= link_to '✖', delete_dashboard_spot_path(@dashboard, spot), remote: true, class: 'remove', method: :delete %>
+		<%= link_to spot.website do %>
+			<div class="span3 spot linktomouseover">
+				<% spot.name.length > 35 ? smaller = " smaller" : smaller = "" %>
+				<%= content_tag :h3, spot.name, class: "hyphenate text" + smaller %>
+				</br>
+				<%= content_tag :h2, spot.current_status, class: spot.current_status %>
+				<br>
+				<div class="appear-on-mouseover">
+					<%= content_tag :p, spot.today_schedule, class: "times-open" %>
+				</div>
+				<!-- <p><%#= link_to '✖', delete_dashboard_spot_path(@dashboard, spot), remote: true, class: 'remove', method: :delete %></p> -->
+			</div>
+		<% end %>
+	<% end %>
+	<a href="#">
+		<div class="span3 spot linktomouseover">
+			<%= content_tag :h2, "+", id: "add_spot" %>
 		</div>
 	</a>
 	<% end %>
