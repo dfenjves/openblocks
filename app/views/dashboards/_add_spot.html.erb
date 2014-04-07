@@ -1,5 +1,7 @@
 
 <% results.each do |result| %>
-<%= check_box_tag(:result[1]) %>
-<%= label_tag(:result[1], "#{result[0]}") %>
+<div class="checkbox">
+	<%= check_box_tag(:result[1], "#{result[0]}") %>
+	<%= label_tag(:result[1], "#{result[0]}") %>
+</div>
 <% end %>
