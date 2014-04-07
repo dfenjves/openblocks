@@ -24,10 +24,10 @@ class DashboardsController < ApplicationController
 	end
 
 	def show
-		# respond_to do |f|
-		# 	f.html
-		# 	f.js
-		# end
+		respond_to do |f|
+			f.html
+			f.js
+		end
 	end
 
 	def new
